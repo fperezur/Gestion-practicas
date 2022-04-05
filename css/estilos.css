@@ -1,0 +1,61 @@
+body.index{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.contenedor_formulario{
+    width: 30%;
+    margin: 0 auto;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+#login{
+    padding: 20px;
+}
+
+.btn-login{
+    margin-top: 10px;
+}
+
+input[type="text"], input[type="password"]{
+    width: 100%;
+    
+}
+
+.navegacion{
+    width: 70%;
+    float: left;
+    margin: 10px auto;
+}
+
+.informacion{
+    width: 20%;
+    float: left;
+    margin-top: 10px;
+}
+
+.menu_superior{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
+
+.menu_superior li a{
+    text-decoration: none;
+    color: #000;
+}
+
+.menu_superior li a:hover{
+    font-weight: bold;
+}
+
+.container{
+    padding-bottom: 50px;
+}
+
+a i{
+    color: #000;
+}
