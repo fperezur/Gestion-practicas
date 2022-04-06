@@ -59,3 +59,20 @@ input[type="text"], input[type="password"]{
 a i{
     color: #000;
 }
+
+.filtro{
+    float: left;
+    width: 50%;
+}
+
+.filtro input{
+    width: 50%;
+}
+
+.bi-arrow-down-circle-fill, .bi-arrow-up-circle-fill{
+    display: none;
+}
+
+#cabecera_nombre:hover{
+    cursor: pointer;
+}

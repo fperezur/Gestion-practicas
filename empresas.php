@@ -12,10 +12,19 @@ check_session();
 
     <section class="container">
         <!-- Contenido  -->
+        <div class="filtro">
+            <label for="filtro">Filtrar:</label>
+            <input type="text" name="filtro" id="filtro" onkeyup="filtrar();">
+            <button class="btn btn-primary" onclick="document.getElementById('filtro').value = ''; filtrar();">Borrar</button>
+</div>
         <table class="table table-hover table-sm">
             <thead class="thead-dark">
                 <tr>
-                <th>Nombre</th>
+                <th id="cabecera_nombre" data-order="ASC" onclick="reordenar();">
+                    Nombre
+                    <i class="bi bi-arrow-down-circle-fill" id="flecha_arriba"></i>
+                    <i class="bi bi-arrow-up-circle-fill" id="flecha_abajo"></i>
+                </th>
                 <th>Dirección</th>
                 <th>Email</th>
                 <th>Teléfono</th>
@@ -24,7 +33,7 @@ check_session();
                 </tr>
             </thead>
             
-            <tbody>
+            <tbody id="tbody_empresas">
                 <?php 
                 $empresas = leer_empresas();
                foreach($empresas as $empresa){
@@ -55,5 +64,7 @@ check_session();
         </table>
 
     </section>
+
+        <script src="./js/scripts.js"  crossorigin="anonymous"></script>
 </body>
 </html>
