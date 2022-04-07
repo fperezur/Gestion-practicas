@@ -16,7 +16,11 @@ check_session();
             <label for="filtro">Filtrar:</label>
             <input type="text" name="filtro" id="filtro" onkeyup="filtrar();">
             <button class="btn btn-primary" onclick="document.getElementById('filtro').value = ''; filtrar();">Borrar</button>
-</div>
+        </div>
+
+        <div class="add_empresa">
+            <a class="btn btn-success"><i class="bi bi-plus-circle"></i> Añadir empresa</a>
+        </div>
         <table class="table table-hover table-sm">
             <thead class="thead-dark">
                 <tr>
@@ -45,7 +49,11 @@ check_session();
                     <td><?php echo $empresa["telefono_empresa"];?></td>
                     <td><?php echo $empresa["responsable_empresa"];?></td>
                     <td>
-                        <a href=""><i class="bi bi-pencil-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"></i></a>  
+                        <!-- Editar empresa -->
+                        <a href="editar_empresa.php?id_empresa=<?php echo $empresa["id_empresa"];?>">
+                            <i class="bi bi-pencil-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"></i>
+                        </a>  
+                        <!-- Borrar empresa -->
                         <a href=""><i class="bi bi-trash3-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Borrar"></i></a> 
                     </td>
                 </tr>
