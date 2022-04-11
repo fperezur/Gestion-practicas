@@ -27,6 +27,7 @@ $empresa = leer_empresa($id_empresa)[0];
             <div class="col">
                 <label for="nombre_empresa">Nombre de la empresa</label>
                 <input type="text" name="nombre_empresa" required value='<?php echo $empresa["nombre_empresa"];?>'>
+
             </div>
             <div class="col">
                 <label for="direccion_empresa">Dirección de la empresa</label>

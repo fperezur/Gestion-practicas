@@ -11,52 +11,66 @@ check_session();
     <?php include("./header.php");?>
 
     <section class="container">
-        <h1 class="title">Listado de empresas</h1>
+    <h1 class="title">Listado de alumnos</h1>
         <!-- Contenido  -->
         <div class="filtro">
             <label for="filtro">Filtrar:</label>
-            <input type="text" name="filtro" id="filtro" onkeyup="filtrar_empresas();">
-            <button class="btn btn-primary" onclick="document.getElementById('filtro').value = ''; filtrar_empresas();">Borrar</button>
+            <input type="text" name="filtro" id="filtro" onkeyup="filtrar_alumnos();">
+            <button class="btn btn-primary" onclick="document.getElementById('filtro').value = ''; filtrar_alumnos();">Borrar</button>
         </div>
 
-        <div class="add_empresa">
-            <a href="add_empresa.php" class="btn btn-success"><i class="bi bi-plus-circle"></i> Añadir empresa</a>
+        <div class="add_alumno">
+            <a href="add_alumno.php" class="btn btn-success"><i class="bi bi-plus-circle"></i> Añadir alumno</a>
         </div>
         <table class="table table-hover table-sm">
             <thead class="thead-dark">
                 <tr>
-                <th id="cabecera_nombre" data-order="ASC" onclick="reordenar_empresas();">
+                <th id="cabecera_nombre" data-order="ASC" onclick="reordenar_alumnos();">
                     Nombre
                     <i class="bi bi-arrow-down-circle-fill" id="flecha_arriba"></i>
                     <i class="bi bi-arrow-up-circle-fill" id="flecha_abajo"></i>
                 </th>
-                <th>Dirección</th>
-                <th>Email</th>
+                <th>Apellidos</th>
+                <th>DNI</th>
                 <th>Teléfono</th>
-                <th>Persona de contacto</th>
+                <th>Empresa asociada</th>
                 <th>Acciones</th>
                 </tr>
             </thead>
             
             <tbody id="tbody_empresas">
                 <?php 
-                $empresas = leer_empresas();
-               foreach($empresas as $empresa){
+                $alumnos = leer_alumnos();
+               foreach($alumnos as $alumno){
+
+                $id_alumno = $alumno["id_alumno"];
+
+
+                // Checkeamos si tiene empresa asociada
+                if(count(leer_empresa_alumno($id_alumno)) > 0){
+                $empresa_asociada = leer_empresa_alumno($id_alumno)[0]["nombre_empresa"];
+                }
+                else{
+                    $empresa_asociada = "No asociado";
+                }
+                
+                
+
                 ?>
                 <tr>
-                    <td><a href="editar_empresa.php?id_empresa=<?php echo $empresa["id_empresa"];?>"><?php echo $empresa["nombre_empresa"];?></a></td>
-                    <td><?php echo $empresa["direccion_empresa"];?></td>
-                    <td><?php echo $empresa["email_empresa"];?></td>
-                    <td><?php echo $empresa["telefono_empresa"];?></td>
-                    <td><?php echo $empresa["responsable_empresa"];?></td>
+                    <td><a href="editar_alumno.php?id_alumno=<?php echo $alumno["id_alumno"];?>"><?php echo $alumno["nombre"];?></a></td>
+                    <td><?php echo $alumno["apellidos"];?></td>
+                    <td><?php echo $alumno["dni"];?></td>
+                    <td><?php echo $alumno["telefono"];?></td>
+                    <td><?php echo $empresa_asociada;?></td>
                     <td>
                         <!-- Editar empresa -->
-                        <a href="editar_empresa.php?id_empresa=<?php echo $empresa["id_empresa"];?>"><i class="bi bi-pencil-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"></i></a>  
-                        <!-- Borrar empresa -->
+                        <a href="editar_alumno.php?id_alumno=<?php echo $alumno["id_alumno"];?>"><i class="bi bi-pencil-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"></i></a>  
+                        <!-- Borrar alumno -->
                         <?php
-                        $_GET["id_empresa"] = $empresa["id_empresa"];
-                        include("./modal.php");?>
-                        <a  data-toggle="modal" data-target="#delete_modal_<?php echo $empresa["id_empresa"];?>" data-id="<?php echo $empresa["id_empresa"];?>"><i class="bi bi-trash3-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Borrar"></i></a>
+                        $_GET["id_alumno"] = $alumno["id_alumno"];
+                        include("./modal_alumno.php");?>
+                        <a  data-toggle="modal" data-target="#delete_modal_<?php echo $alumno["id_alumno"];?>" data-id="<?php echo $alumno["id_alumno"];?>"><i class="bi bi-trash3-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Borrar"></i></a>
                          
                     </td>
                 </tr>
@@ -65,10 +79,9 @@ check_session();
             <tfooter class="thead-dark">
                 <tr>
                 <th>Nombre</th>
-                <th>Dirección</th>
-                <th>Email</th>
+                <th>Apellidos</th>
+                <th>DNI</th>
                 <th>Teléfono</th>
-                <th>Persona de contacto</th>
                 <th>Acciones</th>
                 </tr>
             </tfooter>

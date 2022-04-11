@@ -9,6 +9,30 @@ body{
     margin: 0 auto;
 }
 
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover{
+    font-weight: bold;
+    color: #000;
+}
+
+header{
+    position: fixed;
+    margin-bottom: 100px;
+    top: 0;
+    height: 50px;
+    background-color: #fff;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+}
+
+.title{
+    text-align: center;
+    margin: 30px auto;
+}
 .contenedor_formulario{
     width: 30%;
     margin: 0 auto;
@@ -59,7 +83,8 @@ input[type="text"], input[type="password"]{
 }
 
 .container{
-    padding-bottom: 50px;
+    padding: 50px 0;
+    margin-top: 20px;
     float: left;
 }
 
@@ -84,7 +109,7 @@ a i{
     cursor: pointer;
 }
 
-.add_empresa{
+.add_empresa, .add_alumno{
     float: right;
 }
 
@@ -96,9 +121,27 @@ a i{
     margin-top: 20px;
 }
 
-#editar_empresa label{
-    margin-right: 10px;
+#editar_alumno select, #editar_alumno label{
+    margin-top: 20px;
 }
-#editar_empresa input{
+
+#editar_empresa label, #editar_alumno label{
+    margin-right: 10px;
+    width: 250px;
+}
+#editar_empresa input, #editar_alumno input{
     margin-top: 10px;
 }
+
+#add_empresa select, #add_empresa label{
+    margin-top: 20px;
+}
+
+#add_empresa label{
+    margin-right: 10px;
+    width: 250px;
+}
+#add_empresa input{
+    margin-top: 10px;
+}
+
