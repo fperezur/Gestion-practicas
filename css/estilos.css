@@ -123,12 +123,11 @@ a i{
 
 #editar_alumno select, #editar_alumno label{
     margin-top: 20px;
-}
-
-#editar_empresa label, #editar_alumno label{
     margin-right: 10px;
     width: 250px;
 }
+
+
 #editar_empresa input, #editar_alumno input{
     margin-top: 10px;
 }
@@ -145,3 +144,14 @@ a i{
     margin-top: 10px;
 }
 
+.incidencia_title{
+    display: inline;
+}
+
+.add_incidencia{
+    float: right;
+}
+
+#fechas_practicas{
+    display: flex;
+}

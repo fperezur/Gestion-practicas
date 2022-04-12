@@ -25,6 +25,11 @@ class conectar_db{
         return $resultado;
     }
 
+    public function ultima_id(){
+        $resultado = $this->conexion->insert_id;
+        return $resultado;
+    }
+    
     // CERRAR
     public function cerrar(){
       $this->conexion->close();
@@ -157,6 +162,8 @@ function update_alumno($id, $datos){
     $dni = $datos["dni"];
     $telefono = $datos["telefono"];
     $empresa_asociada = $datos["empresa_asociada"];
+    $fecha_inicio = $datos["fecha_inicio"];
+    $fecha_fin = $datos["fecha_fin"];
     
     $consulta = "UPDATE alumnos
     SET nombre= '$nombre',
@@ -174,12 +181,18 @@ function update_alumno($id, $datos){
         $resultado2 = $conexion->consultar($consulta2)->fetch_all(MYSQLI_ASSOC);
         // Si no la tiene la añadimos
         if( count( $resultado2 ) == 0 ){
-            $consulta3 = "INSERT INTO alumno_asignado_empresa (id_alumno, id_empresa) VALUES ($id, $empresa_asociada)";
+            $consulta3 = "INSERT INTO alumno_asignado_empresa (id_alumno, id_empresa, fecha_inicio, fecha_fin) 
+            VALUES ($id, $empresa_asociada, '$fecha_inicio', '$fecha_fin')";
             $resultado3 = $conexion->consultar($consulta3);
         }
         else{
             // Si la tiene la actualizamos
-            $consulta4 = "UPDATE alumno_asignado_empresa SET id_empresa = $empresa_asociada WHERE id_alumno = $id";
+            $consulta4 = "UPDATE alumno_asignado_empresa SET 
+            id_empresa = $empresa_asociada,
+            fecha_inicio = '$fecha_inicio',
+            fecha_fin = '$fecha_fin'
+            WHERE id_alumno = $id"; 
+            echo $consulta4;
             $resultado4 = $conexion->consultar($consulta4);
         }
     }
@@ -192,6 +205,13 @@ function update_alumno($id, $datos){
 
     header('Location: alumnos.php');
 
+}
+function leer_alumno_empresa($id_empresa){
+    $conexion = new conectar_db();
+    $consulta = "SELECT * FROM alumno_asignado_empresa, alumnos 
+    WHERE id_empresa=" . $id_empresa . " AND alumno_asignado_empresa.id_alumno = alumnos.id_alumno";
+    $resultado = $conexion->consultar($consulta);
+    return $resultado->fetch_all(MYSQLI_ASSOC);
 }
 
 function leer_empresa_alumno($id_alumno){
@@ -211,6 +231,8 @@ function add_alumno($datos){
     $dni = $datos["dni"];
     $telefono = $datos["telefono"];
     $empresa_asociada = $datos["empresa_asociada"];
+    $fecha_inicio = $datos["fecha_inicio"];
+    $fecha_fin = $datos["fecha_fin"];
     
     $consulta = "INSERT INTO alumnos
     (nombre, apellidos,dni,
@@ -223,20 +245,29 @@ function add_alumno($datos){
     $resultado = $conexion->consultar($consulta);
 
     //$last_id = mysqli_insert_id($conexion);
+    $last_id = $conexion->ultima_id();
 
-    print_r($resultado);
 
     // Miramos si el alumno tiene empresa asociada o no
     if($empresa_asociada != ""){
 
         
-            $consulta3 = "INSERT INTO alumno_asignado_empresa (id_alumno, id_empresa) VALUES ($last_id, $empresa_asociada)";
+            $consulta3 = "INSERT INTO alumno_asignado_empresa (id_alumno, id_empresa, fecha_inicio, fecha_fin) 
+            VALUES ($last_id, $empresa_asociada, '$fecha_inicio', '$fecha_fin')";
             $resultado3 = $conexion->consultar($consulta3);
         
     }
     
 
-    //header('Location: empresas.php');
+    header('Location: alumnos.php');
+
+}
+// Función que lee las incidencias de cada empresa
+function leer_incidencias($id_empresa){
+    $conexion = new conectar_db();
+    $consulta = "SELECT * FROM incidencias WHERE id_empresa=" . $id_empresa . " ORDER BY fecha_incidencia DESC";
+    $resultado = $conexion->consultar($consulta);
+    return $resultado->fetch_all(MYSQLI_ASSOC);
 
 }
 ?>

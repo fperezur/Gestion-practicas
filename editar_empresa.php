@@ -14,6 +14,8 @@ $empresa = leer_empresa($id_empresa)[0];
     <?php include("./header.php");?>
 
     <section class="container">
+
+    <h1>Editar empresa</h1>
     <?php 
     if($_POST){
         
@@ -162,6 +164,93 @@ $empresa = leer_empresa($id_empresa)[0];
     </form>
 
         <?php } ?>
+
+        <!-- Alumnos asociados -->
+        <div class="row">
+            <div class="col">
+                <h1 class="incidencia_title">Alumnos asociados</h1>
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+            <table class="table table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Fecha de inicio</th>
+                        <th scope="col">Fecha de fin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                $alumnos_asociados = leer_alumno_empresa($id_empresa);
+               foreach($alumnos_asociados as $alumno){
+                   ?>
+                   <tr>
+                   <td><?php echo $alumno["nombre"];?></td>
+                   <td><?php echo $alumno["apellidos"];?></td>
+                   <td><?php echo $alumno["fecha_inicio"];?></td>
+                   <td><?php echo $alumno["fecha_fin"];?></td>
+                   <td></td>
+               </tr>
+               <?php } ?>
+                </tbody>
+                <footer>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Fecha de inicio</th>
+                        <th scope="col">Fecha de fin</th>
+                    </tr>
+                </thead>
+            </table>
+                
+            </div>
+
+        <!-- Incidencias -->
+        <div class="row">
+            <div class="col">
+                <h1 class="incidencia_title">Incidencias</h1>
+                <a href="add_incidencia.php" class="btn btn-success add_incidencia"><i class="bi bi-plus-circle"></i> Añadir incidencia</a>
+      
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+            <table class="table table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                $incidencias = leer_incidencias($id_empresa);
+               foreach($incidencias as $incidencia){
+                   ?>
+                   <tr>
+                   <td><?php echo date("d-m-Y",(strtotime($incidencia["fecha_incidencia"])));?></td>
+                   <td><?php echo substr($incidencia["texto_incidencia"],0,100) . "...";?></td>
+                   <td></td>
+               </tr>
+               <?php } ?>
+                </tbody>
+                <footer>
+                    <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+            </table>
+                
+            </div>
 
 
     </section>

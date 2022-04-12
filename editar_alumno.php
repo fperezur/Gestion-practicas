@@ -9,6 +9,9 @@ $empresa_asociada = leer_empresa_alumno($id_alumno)[0];
 if(isset($empresa_asociada["id_empresa"])){
     $id_empresa_asociada = $empresa_asociada["id_empresa"];
     $tutor = $empresa_asociada["tutor_empresa"];
+    $fecha_inicio = $empresa_asociada["fecha_inicio"];
+    $fecha_fin = $empresa_asociada["fecha_fin"];
+    
 }
 else{
     $id_empresa_asociada = "";
@@ -83,6 +86,18 @@ else{
                 <input type="text" name="tutor_empresa" id="tutor_empresa" value='<?php echo $tutor;?>' disabled>
             </div>
             
+        </div>
+
+        <div class="row" id="fechas_practicas" style="display:<?php if($tutor != ''){ echo 'flex'; } else {echo 'none';}?>;">
+            <div class="col">
+                <label for="fecha_inicio">Fecha de inicio</label>
+                <input type="date" name="fecha_inicio" id="fecha_inicio" value='<?php echo $fecha_inicio;?>'>
+            </div>
+
+            <div class="col">
+                <label for="fecha_fin">Fecha de fin</label>
+                <input type="date" name="fecha_fin" id="fecha_fin" value='<?php echo $fecha_fin;?>'>
+            </div>
         </div>
 
 

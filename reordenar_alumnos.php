@@ -8,6 +8,14 @@ $consulta = "SELECT * FROM alumnos ORDER BY nombre " . $order;
 $resultado = $conexion->consultar($consulta);
 $alumnos = $resultado->fetch_all(MYSQLI_ASSOC);
 foreach($alumnos as $alumno){
+    // Checkeamos si tiene empresa asociada
+    $id_alumno = $alumno["id_alumno"];
+    if(count(leer_empresa_alumno($id_alumno)) > 0){
+        $empresa_asociada = leer_empresa_alumno($id_alumno)[0]["nombre_empresa"];
+        }
+        else{
+            $empresa_asociada = "No asociado";
+        }
     $_GET["id_alumno"] = $alumno["id_alumno"];
     include("./modal_alumno.php");
     echo
@@ -16,6 +24,7 @@ foreach($alumnos as $alumno){
                     <td>'.$alumno["apellidos"].'</td>
                     <td>'.$alumno["dni"].'</td>
                     <td>'.$alumno["telefono"].'</td>
+                    <td>'.$empresa_asociada.'</td>
                     <td>
                         <a href="editar_alumno.php?id_alumno='.$alumno["id_alumno"].'"><i class="bi bi-pencil-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"></i></a>  
                         <a  data-toggle="modal" data-target="#delete_modal_'.$alumno["id_alumno"].'" data-id="'.$alumno["id_alumno"].'"><i class="bi bi-trash3-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Borrar"></i></a> 

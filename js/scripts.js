@@ -136,6 +136,8 @@ function leer_tutor(){
     
     empresa_seleccionada = document.getElementById("empresa_asociada").value;
     if(empresa_seleccionada != ""){
+
+        document.getElementById("fechas_practicas").style.display = "flex";
     var ajax_url = "http://localhost:8080/Gestion-practicas/leer_tutor.php";
 
     var ajax_request = new XMLHttpRequest();
@@ -161,6 +163,8 @@ function leer_tutor(){
     }
     else{
         document.getElementById("tutor_empresa").value = "";
+        document.getElementById("fechas_practicas").style.display = "none";
+
     }
 
 

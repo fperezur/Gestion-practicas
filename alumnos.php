@@ -82,6 +82,7 @@ check_session();
                 <th>Apellidos</th>
                 <th>DNI</th>
                 <th>Teléfono</th>
+                <th>Empresa asociada</th>
                 <th>Acciones</th>
                 </tr>
             </tfooter>

@@ -74,6 +74,18 @@ $tutor = "";
             
         </div>
 
+        <div class="row" id="fechas_practicas" style="display:none;">
+            <div class="col">
+                <label for="fecha_inicio">Fecha de inicio</label>
+                <input type="date" name="fecha_inicio" id="fecha_inicio">
+            </div>
+
+            <div class="col">
+                <label for="fecha_fin">Fecha de fin</label>
+                <input type="date" name="fecha_fin" id="fecha_fin">
+            </div>
+        </div>
+
 
         <input type="submit" value="Añadir" class="btn btn-primary">
         
