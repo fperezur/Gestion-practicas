@@ -92,7 +92,7 @@ function update_empresa($id, $datos){
     rlt_estado = '$rlt_estado' 
     WHERE id_empresa = $id";
 
-    echo $consulta;
+
     $resultado = $conexion->consultar($consulta);
 
     header('Location: empresas.php');
@@ -270,4 +270,50 @@ function leer_incidencias($id_empresa){
     return $resultado->fetch_all(MYSQLI_ASSOC);
 
 }
+
+// Función que lee una incidencia en concreto
+function leer_incidencia($id_incidencia){
+    $conexion = new conectar_db();
+    $consulta = "SELECT * FROM incidencias WHERE id_incidencia=" . $id_incidencia;
+    $resultado = $conexion->consultar($consulta);
+    return $resultado->fetch_all(MYSQLI_ASSOC);
+
+}
+
+//function that updates the incidencia data in the database
+function update_incidencia($id, $id_empresa, $datos){
+
+    $conexion = new conectar_db();
+    $fecha_incidencia = $datos["fecha_incidencia"];
+    $texto_incidencia = $datos["texto_incidencia"];
+
+    $consulta = "UPDATE incidencias
+    SET fecha_incidencia= '$fecha_incidencia',
+    texto_incidencia = '$texto_incidencia' 
+    WHERE id_incidencia = $id";
+
+
+    $resultado = $conexion->consultar($consulta);
+
+    header('Location: editar_empresa.php?id_empresa=' . $id_empresa);
+
+}
+
+//function that add the incidencia data in the database
+function add_incidencia($id_empresa, $datos){
+
+    $conexion = new conectar_db();
+    $fecha_incidencia = $datos["fecha_incidencia"];
+    $texto_incidencia = $datos["texto_incidencia"];
+
+    $consulta = "INSERT INTO incidencias
+    (fecha_incidencia, texto_incidencia, id_empresa)
+    VALUES ('$fecha_incidencia','$texto_incidencia', $id_empresa)";
+
+    $resultado = $conexion->consultar($consulta);
+
+    header('Location: editar_empresa.php?id_empresa=' . $id_empresa);
+
+}
+
 ?>

@@ -214,7 +214,7 @@ $empresa = leer_empresa($id_empresa)[0];
         <div class="row">
             <div class="col">
                 <h1 class="incidencia_title">Incidencias</h1>
-                <a href="add_incidencia.php" class="btn btn-success add_incidencia"><i class="bi bi-plus-circle"></i> Añadir incidencia</a>
+                <a href="add_incidencia.php?id_empresa=<?php echo $id_empresa;?>" class="btn btn-success add_incidencia"><i class="bi bi-plus-circle"></i> Añadir incidencia</a>
       
             </div>
         </div>
@@ -237,7 +237,11 @@ $empresa = leer_empresa($id_empresa)[0];
                    <tr>
                    <td><?php echo date("d-m-Y",(strtotime($incidencia["fecha_incidencia"])));?></td>
                    <td><?php echo substr($incidencia["texto_incidencia"],0,100) . "...";?></td>
-                   <td></td>
+                   <td>
+                       <!-- Editar incidencia -->
+                       <a href="editar_incidencia.php?id_empresa=<?php echo $id_empresa;?>&id_incidencia=<?php echo $incidencia['id_incidencia'];?>"><i class="bi bi-pencil-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"></i></a>  
+                        
+                   </td>
                </tr>
                <?php } ?>
                 </tbody>

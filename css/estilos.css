@@ -132,7 +132,11 @@ a i{
  margin-top: 10px;
 }
 
-#editar_empresa input, #editar_alumno input{
+#editar_empresa{
+    padding-bottom: 20px;
+}
+
+#editar_empresa input, #editar_alumno input, #editar_alumno textarea{
     margin-top: 10px;
 }
 
