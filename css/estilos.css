@@ -121,12 +121,16 @@ a i{
     margin-top: 20px;
 }
 
-#editar_alumno select, #editar_alumno label{
+#editar_alumno label{
     margin-top: 20px;
     margin-right: 10px;
     width: 250px;
 }
 
+#editar_alumno select{
+
+ margin-top: 10px;
+}
 
 #editar_empresa input, #editar_alumno input{
     margin-top: 10px;

@@ -28,42 +28,42 @@ $empresa = leer_empresa($id_empresa)[0];
         <div class="row">
             <div class="col">
                 <label for="nombre_empresa">Nombre de la empresa</label>
-                <input type="text" name="nombre_empresa" required value='<?php echo $empresa["nombre_empresa"];?>'>
+                <input class="form-control" type="text" name="nombre_empresa" required value='<?php echo $empresa["nombre_empresa"];?>'>
 
             </div>
             <div class="col">
                 <label for="direccion_empresa">Dirección de la empresa</label>
-                <input type="text" name="direccion_empresa" value='<?php echo $empresa["direccion_empresa"];?>'>
+                <input class="form-control" type="text" name="direccion_empresa" value='<?php echo $empresa["direccion_empresa"];?>'>
             </div>
         </div>
 
         <div class="row">
             <div class="col">
                 <label for="email_empresa">Email de la empresa</label>
-                <input type="text" name="email_empresa" required value='<?php echo $empresa["email_empresa"];?>'>
+                <input class="form-control" type="text" name="email_empresa" required value='<?php echo $empresa["email_empresa"];?>'>
             </div>
 
             <div class="col">
                 <label for="telefono_empresa">Teléfono de la empresa</label>
-                <input type="text" name="telefono_empresa" required value='<?php echo $empresa["telefono_empresa"];?>'>
+                <input class="form-control" type="text" name="telefono_empresa" required value='<?php echo $empresa["telefono_empresa"];?>'>
             </div>
         </div>
 
         <div class="row">
             <div class="col">
                 <label for="url_empresa">Url de la empresa</label>
-                <input type="text" name="url_empresa" value='<?php echo $empresa["url_empresa"];?>'>
+                <input class="form-control" type="text" name="url_empresa" value='<?php echo $empresa["url_empresa"];?>'>
             </div>
             <div class="col">
                 <label for="responsable_empresa">Responsable de la empresa</label>
-                <input type="text" name="responsable_empresa" value='<?php echo $empresa["responsable_empresa"];?>'>
+                <input class="form-control" type="text" name="responsable_empresa" value='<?php echo $empresa["responsable_empresa"];?>'>
             </div>
         </div>  
 
         <div class="row">
             <div class="col">
                 <label for="tutor_empresa">Tutor de la empresa</label>
-                <input type="text" name="tutor_empresa" value='<?php echo $empresa["tutor_empresa"];?>'>
+                <input class="form-control" type="text" name="tutor_empresa" value='<?php echo $empresa["tutor_empresa"];?>'>
             </div>
             <div class="col">
                 
@@ -73,7 +73,7 @@ $empresa = leer_empresa($id_empresa)[0];
         <div class="row">
             <div class="col">
                 <label for="convenio_estado">Estado del documento Convenio</label>
-                <select name="convenio_estado">
+                <select class="form-select" name="convenio_estado">
                     <option 
                         value="Por enviar" 
                         <?php if($empresa["convenio_estado"] == "Por enviar") { echo "selected";} ?>>
@@ -94,7 +94,7 @@ $empresa = leer_empresa($id_empresa)[0];
             </div>
             <div class="col">
                 <label for="anexo_1_estado">Estado del documento Anexo1</label>
-                <select name="anexo_1_estado">
+                <select class="form-select" name="anexo_1_estado">
                     <option 
                         value="Por enviar" 
                         <?php if($empresa["anexo_1_estado"] == "Por enviar") { echo "selected";} ?>>
@@ -118,7 +118,7 @@ $empresa = leer_empresa($id_empresa)[0];
         <div class="row">
             <div class="col">
                 <label for="anexo_8_estado">Estado del documento Anexo8</label>
-                <select name="anexo_8_estado">
+                <select class="form-select" name="anexo_8_estado">
                     <option 
                         value="Por enviar" 
                         <?php if($empresa["anexo_8_estado"] == "Por enviar") { echo "selected";} ?>>
@@ -139,7 +139,7 @@ $empresa = leer_empresa($id_empresa)[0];
             </div>
             <div class="col">  
                 <label for="rlt_estado">Estado del documento RLT</label>
-                <select name="rlt_estado">
+                <select class="form-select" name="rlt_estado">
                     <option 
                         value="Por enviar" 
                         <?php if($empresa["rlt_estado"] == "Por enviar") { echo "selected";} ?>>
@@ -190,7 +190,7 @@ $empresa = leer_empresa($id_empresa)[0];
                foreach($alumnos_asociados as $alumno){
                    ?>
                    <tr>
-                   <td><?php echo $alumno["nombre"];?></td>
+                   <td><a href='editar_alumno.php?id_alumno=<?php echo $alumno['id_alumno'];?>'><?php echo $alumno["nombre"];?></a></td>
                    <td><?php echo $alumno["apellidos"];?></td>
                    <td><?php echo $alumno["fecha_inicio"];?></td>
                    <td><?php echo $alumno["fecha_fin"];?></td>
