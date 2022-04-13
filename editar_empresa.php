@@ -175,7 +175,7 @@ $empresa = leer_empresa($id_empresa)[0];
 
         <div class="row">
             <div class="col">
-            <table class="table table-hover table-sm">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Nombre</th>
@@ -211,7 +211,7 @@ $empresa = leer_empresa($id_empresa)[0];
             </div>
 
         <!-- Incidencias -->
-        <div class="row">
+        <div class="row" style="margin-top: 20px;">
             <div class="col">
                 <h1 class="incidencia_title">Incidencias</h1>
                 <a href="add_incidencia.php?id_empresa=<?php echo $id_empresa;?>" class="btn btn-success add_incidencia"><i class="bi bi-plus-circle"></i> Añadir incidencia</a>
@@ -221,7 +221,7 @@ $empresa = leer_empresa($id_empresa)[0];
 
         <div class="row">
             <div class="col">
-            <table class="table table-hover table-sm">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Fecha</th>

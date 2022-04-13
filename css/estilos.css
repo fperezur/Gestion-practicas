@@ -25,7 +25,7 @@ header{
     top: 0;
     height: 50px;
     background-color: #fff;
-    width: 100%;
+    width: 90%;
     border-bottom: 1px solid #ccc;
 }
 
@@ -85,7 +85,7 @@ input[type="text"], input[type="password"]{
 .container{
     padding: 50px 0;
     margin-top: 20px;
-    float: left;
+   
 }
 
 a i{
@@ -162,4 +162,12 @@ a i{
 
 #fechas_practicas{
     display: flex;
+}
+
+.bi-pencil-fill{
+    color: #0d6efd;
+}
+
+.bi-trash3-fill{
+    color: #dc3545;
 }

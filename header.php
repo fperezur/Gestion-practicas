@@ -1,4 +1,4 @@
-<header>
+<header class="navbar-light bg-light">
         <div class="navegacion">
         <ul class="menu_superior">
             <li><a href="empresas.php">Empresas</a></li>

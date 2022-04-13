@@ -22,7 +22,7 @@ check_session();
         <div class="add_empresa">
             <a href="add_empresa.php" class="btn btn-success"><i class="bi bi-plus-circle"></i> Añadir empresa</a>
         </div>
-        <table class="table table-hover table-sm">
+        <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>
                 <th id="cabecera_nombre" data-order="ASC" onclick="reordenar_empresas();">
