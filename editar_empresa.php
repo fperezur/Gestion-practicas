@@ -66,6 +66,31 @@ $empresa = leer_empresa($id_empresa)[0];
                 <input class="form-control" type="text" name="tutor_empresa" value='<?php echo $empresa["tutor_empresa"];?>'>
             </div>
             <div class="col">
+            <label for="estado_empresa">Estado de la empresa</label>
+                <select class="form-select" name="estado_empresa">
+                    <option 
+                        value="Por contactar" 
+                        <?php if($empresa["estado_empresa"] == "Por contactar") { echo "selected";} ?>>
+                        Por contactar
+                    </option>
+                    <option 
+                        value="Contactado"
+                        <?php if($empresa["estado_empresa"] == "Contactado") { echo "selected";} ?>>
+                        Contactado
+                    </option>
+                    <option 
+                        value="No interesado"
+                        <?php if($empresa["estado_empresa"] == "No interesado") { echo "selected";} ?>
+                        >
+                        No interesado
+                    </option>
+                    <option 
+                        value="Interesado"
+                        <?php if($empresa["estado_empresa"] == "Interesado") { echo "selected";} ?>
+                        >
+                        Interesado
+                    </option>
+                </select>
                 
             </div>
         </div>

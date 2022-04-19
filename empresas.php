@@ -22,6 +22,24 @@ check_session();
         <div class="add_empresa">
             <a href="add_empresa.php" class="btn btn-success"><i class="bi bi-plus-circle"></i> Añadir empresa</a>
         </div>
+
+        <div class="color_code">
+            <div class="item">
+            Por contactar <div class="cuadrado dark"></div>
+            </div>
+
+            <div class="item">
+            Contactado <div class="cuadrado light"></div>
+            </div>
+
+            <div class="item">
+            No interesado <div class="cuadrado danger"></div>
+            </div>
+
+            <div class="item">
+            Interesado <div class="cuadrado success"></div>
+            </div>
+        </div>
         <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>
@@ -42,8 +60,23 @@ check_session();
                 <?php 
                 $empresas = leer_empresas();
                foreach($empresas as $empresa){
+                   $estado_empresa = $empresa["estado_empresa"];
+                   switch($estado_empresa){
+                       case "Por contactar":
+                           $tr_class = "dark";
+                           break;
+                       case "Contactado":
+                           $tr_class = "warning";
+                           break;
+                        case "No interesado":
+                            $tr_class = "danger";
+                            break;
+                        case "Interesado":
+                            $tr_class = "success";
+                            break;
+                   }
                 ?>
-                <tr>
+                <tr class="table-<?php echo $tr_class;?>">
                     <td><a href="editar_empresa.php?id_empresa=<?php echo $empresa["id_empresa"];?>"><?php echo $empresa["nombre_empresa"];?></a></td>
                     <td><?php echo $empresa["direccion_empresa"];?></td>
                     <td><?php echo $empresa["email_empresa"];?></td>

@@ -49,9 +49,11 @@ check_session();
                 // Checkeamos si tiene empresa asociada
                 if(count(leer_empresa_alumno($id_alumno)) > 0){
                 $empresa_asociada = leer_empresa_alumno($id_alumno)[0]["nombre_empresa"];
+                $id_empresa_asociada = leer_empresa_alumno($id_alumno)[0]["id_empresa"];
                 }
                 else{
                     $empresa_asociada = "No asociado";
+                    $id_empresa_asociada = "";
                 }
                 
                 
@@ -62,7 +64,11 @@ check_session();
                     <td><?php echo $alumno["apellidos"];?></td>
                     <td><?php echo $alumno["dni"];?></td>
                     <td><?php echo $alumno["telefono"];?></td>
+                    <?php if($id_empresa_asociada == ""){ ?>
                     <td><?php echo $empresa_asociada;?></td>
+                    <?php }else{ ?>
+                    <td><a href="editar_empresa.php?id_empresa=<?php echo $id_empresa_asociada;?>"><?php echo $empresa_asociada;?></a></td>
+                    <?php }?>
                     <td>
                         <!-- Editar empresa -->
                         <a href="editar_alumno.php?id_alumno=<?php echo $alumno["id_alumno"];?>"><i class="bi bi-pencil-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"></i></a>  

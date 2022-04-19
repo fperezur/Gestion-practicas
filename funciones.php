@@ -72,6 +72,7 @@ function update_empresa($id, $datos){
     $telefono_empresa = $datos["telefono_empresa"];
     $url_empresa = $datos["url_empresa"];
     $responsable_empresa = $datos["responsable_empresa"];
+    $estado_empresa = $datos["estado_empresa"];
     $tutor_empresa = $datos["tutor_empresa"];
     $convenio_estado = $datos["convenio_estado"];
     $anexo_1_estado = $datos["anexo_1_estado"];
@@ -85,6 +86,7 @@ function update_empresa($id, $datos){
     telefono_empresa = $telefono_empresa,
     url_empresa = '$url_empresa',
     responsable_empresa = '$responsable_empresa',
+    estado_empresa = '$estado_empresa',
     tutor_empresa = '$tutor_empresa',
     convenio_estado = '$convenio_estado',
     anexo_1_estado = '$anexo_1_estado',
@@ -111,6 +113,7 @@ function add_empresa($datos){
     $telefono_empresa = $datos["telefono_empresa"];
     $url_empresa = $datos["url_empresa"];
     $responsable_empresa = $datos["responsable_empresa"];
+    $estado_empresa = $datos["estado_empresa"];
     $tutor_empresa = $datos["tutor_empresa"];
     $convenio_estado = $datos["convenio_estado"];
     $anexo_1_estado = $datos["anexo_1_estado"];
@@ -120,11 +123,11 @@ function add_empresa($datos){
     $consulta = "INSERT INTO empresas
     (nombre_empresa, email_empresa,direccion_empresa,
     telefono_empresa,url_empresa,responsable_empresa,
-    tutor_empresa,convenio_estado,anexo_1_estado,
-    anexo_8_estado,rlt_estado)
+    estado_empresa,tutor_empresa,convenio_estado,
+    anexo_1_estado, anexo_8_estado,rlt_estado)
     VALUES ('$nombre_empresa', '$email_empresa',
     '$direccion_empresa',$telefono_empresa,
-    '$url_empresa','$responsable_empresa',
+    '$url_empresa','$responsable_empresa', '$estado_empresa',
     '$tutor_empresa','$convenio_estado',
     '$anexo_1_estado','$anexo_8_estado','$rlt_estado')";
 

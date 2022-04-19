@@ -8,10 +8,25 @@ $consulta = "SELECT * FROM empresas ORDER BY nombre_empresa " . $order;
 $resultado = $conexion->consultar($consulta);
 $empresas = $resultado->fetch_all(MYSQLI_ASSOC);
 foreach($empresas as $empresa){
+    $estado_empresa = $empresa["estado_empresa"];
+    switch($estado_empresa){
+        case "Por contactar":
+            $tr_class = "dark";
+            break;
+        case "Contactado":
+            $tr_class = "warning";
+            break;
+        case "No interesado":
+            $tr_class = "danger";
+            break;
+        case "Interesado":
+            $tr_class = "success";
+            break;
+    }
     $_GET["id_empresa"] = $empresa["id_empresa"];
     include("./modal.php");
     echo
-    '<tr>
+    '<tr class="table-'.$tr_class.'">
                     <td><a href="editar_empresa.php?id_empresa='.$empresa["id_empresa"].'">'.$empresa["nombre_empresa"].'</a></td>
                     <td>'.$empresa["direccion_empresa"].'</td>
                     <td>'.$empresa["email_empresa"].'</td>

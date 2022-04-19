@@ -118,7 +118,7 @@ a i{
 }
 
  #editar_empresa select, #editar_empresa label{
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 #editar_alumno label{
@@ -170,4 +170,39 @@ a i{
 
 .bi-trash3-fill{
     color: #dc3545;
+}
+.table-dark a{
+    color: #fff;
+}
+.color_code{
+    float: left;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.cuadrado{
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    float: left;
+    margin-right: 10px;
+
+}
+
+.dark{
+    background-color: #212529;
+}
+
+.light{
+    background-color: #fff3cd;
+}
+
+.success{
+    background-color:#d1e7dd;
+}
+
+.danger{
+    background-color: #f8d7da;
 }
