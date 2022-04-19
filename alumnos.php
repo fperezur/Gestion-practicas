@@ -22,6 +22,17 @@ check_session();
         <div class="add_alumno">
             <a href="add_alumno.php" class="btn btn-success"><i class="bi bi-plus-circle"></i> Añadir alumno</a>
         </div>
+
+        <div class="color_code">
+            <div class="item">
+            Sin asociar <div class="cuadrado dark"></div>
+            </div>
+
+            <div class="item">
+            Alumno asociado <div class="cuadrado success"></div>
+            </div>
+        </div>
+
         <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>
@@ -50,16 +61,18 @@ check_session();
                 if(count(leer_empresa_alumno($id_alumno)) > 0){
                 $empresa_asociada = leer_empresa_alumno($id_alumno)[0]["nombre_empresa"];
                 $id_empresa_asociada = leer_empresa_alumno($id_alumno)[0]["id_empresa"];
+                $tr_class = "success";
                 }
                 else{
                     $empresa_asociada = "No asociado";
                     $id_empresa_asociada = "";
+                    $tr_class = "dark";
                 }
                 
                 
 
                 ?>
-                <tr>
+                <tr class="table-<?php echo $tr_class;?>">
                     <td><a href="editar_alumno.php?id_alumno=<?php echo $alumno["id_alumno"];?>"><?php echo $alumno["nombre"];?></a></td>
                     <td><?php echo $alumno["apellidos"];?></td>
                     <td><?php echo $alumno["dni"];?></td>
