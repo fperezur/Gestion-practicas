@@ -62,9 +62,10 @@ input[type="text"], input[type="password"]{
 }
 
 .informacion{
-    width: 20%;
+    width: 30%;
     float: left;
     margin-top: 10px;
+    font-size: 20px;
 }
 
 .menu_superior{
@@ -76,10 +77,15 @@ input[type="text"], input[type="password"]{
 .menu_superior li a{
     text-decoration: none;
     color: #000;
+    font-size: 20px;
 }
 
 .menu_superior li a:hover{
     font-weight: bold;
+}
+
+.menu_superior li a i{
+    margin-right: 10px;
 }
 
 .container{

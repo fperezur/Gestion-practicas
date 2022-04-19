@@ -12,14 +12,16 @@ foreach($alumnos as $alumno){
     $id_alumno = $alumno["id_alumno"];
     if(count(leer_empresa_alumno($id_alumno)) > 0){
         $empresa_asociada = leer_empresa_alumno($id_alumno)[0]["nombre_empresa"];
+        $tr_class = "success";
         }
         else{
             $empresa_asociada = "No asociado";
+            $tr_class = "dark";
         }
     $_GET["id_alumno"] = $alumno["id_alumno"];
     include("./modal_alumno.php");
     echo
-    '<tr>
+    '<tr class="table-'.$tr_class.'">
                     <td><a href="editar_alumno.php?id_alumno='.$alumno["id_alumno"].'">'.$alumno["nombre"].'</a></td>
                     <td>'.$alumno["apellidos"].'</td>
                     <td>'.$alumno["dni"].'</td>
